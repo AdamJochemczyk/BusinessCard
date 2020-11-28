@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #fff;
-    color: #000;
+    background-color: #000;
+    color: #fff;
 }
 
 body::-webkit-scrollbar{
@@ -29,6 +29,16 @@ main{
     margin-left: 5rem;
     padding: 1rem;
 }
+.title{
+    font-family: 'Merriweather';
+    font-weight: 700;
+    text-align: center;
+    font-size: 2.5rem;
+}
+section{
+    min-height: 100vh;
+}
+/*navbar*/
 .navbar{
     position: fixed;
     background-color: var(--bg-primary);
@@ -99,7 +109,31 @@ main{
     left: -999px;
     transition: var(--transition-speed);
 }
-
+/*about*/
+.about{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    align-items: center;
+}
+.about__left{
+    flex-basis: 45%;
+    margin: 0 5%;
+}
+.about__right{
+    flex-basis: 40%;
+}
+.about__img{
+width: 100%;
+}
+.about__left p{
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1ch;
+}
+.about__left ul{
+    margin-left: 3rem;
+}
 
 /*small screen*/
 @media only screen and (max-width: 600px){
@@ -123,7 +157,10 @@ main{
 
   main {
     margin: 0;
-  } 
+  }
+  .title{
+      font-size: 1.5rem;
+  }
 }
 /*large screen*/
 @media only screen and (min-width: 600px){
