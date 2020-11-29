@@ -122,8 +122,8 @@ svg {
   align-items: center;
 }
 .about__left {
-  flex-basis: 45%;
-  margin: 0 5%;
+  flex-basis: 50%;
+  padding: 0 5%;
 }
 .about__right {
   flex-basis: 40%;
@@ -138,12 +138,26 @@ svg {
 }
 .about__left ul {
   margin-left: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+p.typewriter {
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 2rem;
+  animation: animated-text 2s steps(30,end) 1s 1 normal both;
+}
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 410px;}
 }
 /*projects*/
 .projects {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-template-rows: repeat(2, minmax(40vh,1fr));
+  grid-template-rows: repeat(2, minmax(40vh, 1fr));
   gap: 20px;
 }
 .projects__item {
@@ -151,31 +165,116 @@ svg {
   padding: 10px;
 }
 .projects__title {
- margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
-.projects__photo--container{
-    overflow: hidden;
+.projects__photo--container {
+  overflow: hidden;
 }
 .projects__item--photo {
   width: 100%;
   object-fit: contain;
 }
-.projects__item--photo:hover{
-    transform: scale(1.1);
+.projects__item--photo:hover {
+  transform: scale(1.1);
 }
 /*technologies*/
-section#technologies{
-    min-height: 15vh;
+section#technologies {
+  min-height: 15vh;
 }
-.technologies{
-    display: grid;
-    grid-template-columns: repeat(6, minmax(200px, 1fr));
-    gap:20px;
-    text-align: center;
+.technologies {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(200px, 1fr));
+  gap: 20px;
+  text-align: center;
 }
-.technologies__item{
-    padding: 10px;
-    background-color:#141418;
+.technologies__item {
+  padding: 10px;
+  background-color: #141418;
+}
+/*Contact*/
+section#contact {
+  margin-top: 3vh;
+  min-height: 60vh;
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1e1e24;
+  padding: 2%;
+}
+/*left side*/
+.form {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.input-container {
+  width: 400px;
+  position: relative;
+  margin-bottom: 25px;
+}
+.input-container label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+.input-container input {
+  border: 0;
+  border-bottom: 1px solid #555;
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+  color: #fff;
+}
+.input-container input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+.btn {
+  color: #fff;
+  background-color:var(--bg-primary);
+  outline: none;
+  border: 0;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+  top: -12px;
+  font-size: 12px;
+}
+
+/*right side*/
+.contact__findme {
+  flex-basis: 50%;
+  padding-left: 15px;
+  border-left: 1.5px solid #fff;
+}
+.findme__item {
+  display: flex;
+  align-items: center;
+}
+.findme__item p {
+  padding-left: 10px;
+}
+.findme__item a {
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+}
+
+footer {
+  text-align: center;
+  background-color: #1e1e1e;
 }
 /*small screen*/
 @media only screen and (max-width: 600px) {
@@ -205,21 +304,26 @@ section#technologies{
   }
   /*about*/
   .about__left {
-  flex-basis: 100%;
-  margin: 0 5%;
-}
-.about__right {
-  flex-basis: 100%;
-}
+    flex-basis: 100%;
+    margin: 0 5%;
+  }
+  .about__right {
+    flex-basis: 100%;
+  }
   /*projects*/
-  .projects{
-      grid-template-columns:300px;
-      justify-content: center;
+  .projects {
+    grid-template-columns: 300px;
+    justify-content: center;
   }
   /*technologies*/
-.technologies{
-     grid-template-columns: repeat(2, minmax(200px, 1fr));grid-template-rows: repeat(3, minmax(100px, 1fr));
-}
+  .technologies {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: repeat(3, minmax(100px, 1fr));
+  }
+
+  footer {
+    display: none;
+  }
 }
 /*large screen*/
 @media only screen and (min-width: 600px) {
