@@ -163,7 +163,20 @@ svg {
 .projects__item--photo:hover{
     transform: scale(1.1);
 }
-
+/*technologies*/
+section#technologies{
+    min-height: 15vh;
+}
+.technologies{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    gap:20px;
+    text-align: center;
+}
+.technologies__item{
+    padding: 10px;
+    background-color:#141418;
+}
 /*small screen*/
 @media only screen and (max-width: 600px) {
   .navbar {
@@ -203,6 +216,10 @@ svg {
       grid-template-columns:300px;
       justify-content: center;
   }
+  /*technologies*/
+.technologies{
+     grid-template-columns: repeat(2, minmax(200px, 1fr));grid-template-rows: repeat(3, minmax(100px, 1fr));
+}
 }
 /*large screen*/
 @media only screen and (min-width: 600px) {
