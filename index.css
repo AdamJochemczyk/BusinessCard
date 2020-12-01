@@ -21,7 +21,6 @@ body::-webkit-scrollbar-thumb {
   background: #6649b8;
 }
 :root {
-  font-size: 16px;
   font-family: "Open Sans";
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
@@ -35,13 +34,28 @@ main {
 .title {
   font-family: "Merriweather";
   font-weight: 700;
-  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 section {
   min-height: 100vh;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+section>h1.title{
+ display: flex;
+ align-items: center;
+}
+section>h1.title::before,
+section>h1.title::after {
+  content: '';
+  display: block;
+  border: 1px solid #fff;
+}
+section>h1.title::before,
+section>h1.title::after {
+  flex-grow: 1;
+  margin: 0 5px;
 }
 /*navbar*/
 .navbar {
@@ -49,6 +63,7 @@ section {
   background-color: var(--bg-primary);
   transition: width 400ms ease;
   overflow: hidden;
+  z-index: 5;
 }
 .navbar-nav {
   list-style: none;
@@ -123,7 +138,7 @@ svg {
 }
 .about__left {
   flex-basis: 50%;
-  padding: 0 5%;
+  font-size: 1.5rem;
 }
 .about__right {
   flex-basis: 40%;
@@ -132,32 +147,62 @@ svg {
   width: 100%;
 }
 .about__left p {
-  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.1ch;
 }
 .about__left ul {
   margin-left: 3rem;
-  font-size: 1.5rem;
   font-weight: 700;
 }
 
 p.typewriter {
   white-space: nowrap;
   overflow: hidden;
-  font-size: 2rem;
-  animation: animated-text 2s steps(30,end) 1s 1 normal both;
+  animation: animated-text 2s steps(30, end) 1s 1 normal both;
 }
 
-@keyframes animated-text{
-  from{width: 0;}
-  to{width: 410px;}
+.cv{
+  margin: 10px 0;
+  display: block;
+  line-height: 40px;
+  width: 260px;
+  font-size: 2rem;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.cv span{
+  position: relative;
+  z-index: 1;
+}
+.cv:hover{
+  color: #000;
+}
+.cv:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #fff;
+  transition: all .35s;
+}
+
+.cv:hover:after{
+  width: 100%;
 }
 /*projects*/
 .projects {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-template-rows: repeat(2, minmax(40vh, 1fr));
+  grid-template-rows: repeat(2, minmax(400px, 1fr));
   gap: 20px;
 }
 .projects__item {
@@ -183,7 +228,7 @@ section#technologies {
 }
 .technologies {
   display: grid;
-  grid-template-columns: repeat(6, minmax(200px, 1fr));
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
   gap: 20px;
   text-align: center;
 }
@@ -193,7 +238,6 @@ section#technologies {
 }
 /*Contact*/
 section#contact {
-  margin-top: 3vh;
   min-height: 60vh;
 }
 .contact {
@@ -208,9 +252,10 @@ section#contact {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 .input-container {
-  width: 400px;
+  width: 250px;
   position: relative;
   margin-bottom: 25px;
 }
@@ -237,7 +282,7 @@ section#contact {
 }
 .btn {
   color: #fff;
-  background-color:var(--bg-primary);
+  background-color: var(--bg-primary);
   outline: none;
   border: 0;
   color: #fff;
@@ -277,7 +322,7 @@ footer {
   background-color: #1e1e1e;
 }
 /*small screen*/
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .navbar {
     bottom: 0;
     width: 100vw;
@@ -306,10 +351,19 @@ footer {
   .about__left {
     flex-basis: 100%;
     margin: 0 5%;
+    font-size: .8rem;
   }
   .about__right {
     flex-basis: 100%;
   }
+  @keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 310px;
+  }
+}
   /*projects*/
   .projects {
     grid-template-columns: 300px;
@@ -317,8 +371,19 @@ footer {
   }
   /*technologies*/
   .technologies {
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    grid-template-rows: repeat(3, minmax(100px, 1fr));
+    grid-template-columns: repeat(1, minmax(200px, 300px));
+    grid-template-rows: repeat(6, minmax(100px, 1fr));
+    justify-content: center;
+  }
+  /*contact*/ 
+  section#contact {
+  margin-bottom: 15vh;
+}
+  .contact__findme {
+  border-left: none;
+  }
+  .form {
+    margin-bottom: 20px;
   }
 
   footer {
@@ -326,7 +391,7 @@ footer {
   }
 }
 /*large screen*/
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 769px) {
   .navbar {
     top: 0;
     width: 5rem;
@@ -350,4 +415,61 @@ footer {
   .navbar:hover .logo svg {
     transform: rotate(-180deg);
   }
+  .about__left {
+  padding: 0 5%;
+   font-size: 2rem;
+}
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 420px;
+  }
+}
+}
+/* XL screens*/
+@media only screen and (min-width: 2000px) {
+  .about__left{
+    font-size: 2.5rem;
+  }
+  .title{
+    font-size: 5rem;
+  }
+  .cv{
+    width: 400px;
+  }
+  .project-description{
+    font-size: 2rem;
+  }
+  .technologies{
+    font-size: 2rem;
+  }
+  .contact{
+    font-size: 2rem;
+  }
+  .btn{
+    font-size: 2rem;
+  }
+  .input-container {
+  width: 500px;
+  margin-bottom: 30px;
+}
+.input-container input {
+  font-size: 2.5rem;
+  color: #fff;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+  top: -25px;
+  font-size: 2rem;
+}
+  @keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 600px;
+  }
+}
 }
